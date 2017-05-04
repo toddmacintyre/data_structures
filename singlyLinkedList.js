@@ -1,19 +1,15 @@
 // impliment module pattern for namespacing
 
-class QueueNode {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
-  }
-}
+const Node = require('./linkedListNode.js');
 
-class Queue {
+class SinglyLinkedList {
   constructor(value) {
-    this.head = new QueueNode(value);
+    this.head = new Node(value);
     this.tail = this.head;
   }
 
-  enqueue(node) {
+  addToTail(value) {
+    const node = new Node(value);
     if (!this.head) {
       this.head = node;
     }
@@ -23,9 +19,9 @@ class Queue {
     return this.tail = node;
   }
 
-  dequeue() {
+  removeHead() {
     if (this.head) {
-      let temp = this.head;
+      const temp = this.head;
       if (this.head.next) {
         this.head = this.head.next;
         return temp;
@@ -51,12 +47,14 @@ class Queue {
   }
 }
 
-// let queue = new Queue(1);
-// console.log(queue.enqueue(new QueueNode(2)));
-// console.log(queue.enqueue(new QueueNode(3)));
-// console.log(queue.enqueue(new QueueNode(4)));
-// console.log(queue.enqueue(new QueueNode(5)));
-// console.log(queue.dequeue());
-// console.log(queue);
+module.exports = SinglyLinkedList;
 
-// console.log(queue.access(6));
+// let linkedList = new SinglyLinkedList(1);linkedList
+// console.log(linkedList.addToTail(new Node(2)));
+// console.log(linkedList.addToTail(new Node(3)));
+// console.log(linkedList.addToTail(new Node(4)));
+// console.log(linkedList.addToTail(new Node(5)));
+// console.log(linkedList.removeHead());
+// console.log(linkedList);
+
+// console.log(linkedList.access(3));
