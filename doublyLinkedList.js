@@ -68,12 +68,26 @@ class DoublyLinkedList {
     }
   }
 
+  access(target, current = this.head) {
+    console.log('+++++++++', current.value);
+    if (!current) {
+      return undefined;
+    }
+    if (target === current.value) {
+      return current;
+    }
+    if (current.next) {
+      return this.access(target, current.next);
+    }
+    return false;
+  }
+
   // access() {
   //   Object.assign({}, SinglyLinkedList.prototype.access);
   // }
 }
 
-Object.assign(DoublyLinkedList, SinglyLinkedList.access);
+// Object.assign(DoublyLinkedList, SinglyLinkedList.access);
 
 // DoublyLinkedList.prototype.access = Object.create(SinglyLinkedList.prototype.access);
 
