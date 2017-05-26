@@ -1,19 +1,10 @@
-// const fs = require('fs');
-// const path = require('path');
+const path = require('path');
 const readFileName = require('../services/readFile').readFileName;
 
 var input_stdin_array = "";
 var input_currentline = 0;
 
-// fs.readFile(path.join(__dirname, 'input.txt'), 'utf8', (err, data) => {
-//   if (err) throw new Error(err);
-//   input_stdin_array = data.split('\n');
-//   main();
-// });
-
-// console.log('------', readFileName);
-
-readFileName('input.txt')
+readFileName(path.join(__dirname, 'input.txt'))
   .then(result => {
     input_stdin_array = result.split('\n');
     main();
@@ -26,7 +17,7 @@ function readLine() {
     return input_stdin_array[input_currentline++];
 }
 
-/////////////// ignore above this line ////////////////////
+
 
 function main() {
     var arr = [];
